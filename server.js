@@ -57,6 +57,16 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-});
+// === БЫЛО ===
+// app.listen(PORT, () => {
+//    console.log(`Server running at http://localhost:${PORT}`);
+// });
+
+// === СТАЛО (Замени на это) ===
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running at http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
